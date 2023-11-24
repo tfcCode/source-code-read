@@ -16,6 +16,7 @@
 
     <select id="findAll" resultMap="findAll">
         select *
-        from user u, address a where u.id = a.id;
+        from user u, address a where u.age > #{age} and a.province = #{province} and u.id = a.id;
     </select>
+
 </mapper>

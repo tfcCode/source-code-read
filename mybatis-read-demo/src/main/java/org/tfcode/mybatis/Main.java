@@ -26,10 +26,10 @@ public class Main {
 
         // 获取Mapper
         UserDao mapper = sqlSession.getMapper(UserDao.class);
-        List<User> all = mapper.findAll();
+        List<User> all = mapper.findAll(10, "湖北省");
         System.out.println(all);
 
-        sqlSession.close();
         sqlSession.commit();
+        sqlSession.close();
     }
 }
