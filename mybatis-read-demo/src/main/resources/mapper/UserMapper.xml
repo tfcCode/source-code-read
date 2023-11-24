@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.tfcode.mybatis.dao.UserDao">
+
+    <resultMap id="findAll" type="org.tfcode.mybatis.domain.User">
+        <result column="id" property="id"/>
+        <result column="age" property="age"/>
+        <result column="name" property="name"/>
+        <association property="address" javaType="org.tfcode.mybatis.domain.Address">
+            <result column="id" property="id"/>
+            <result column="province" property="province"/>
+            <result column="city" property="city"/>
+            <result column="country" property="country"/>
+        </association>
+    </resultMap>
+
+    <select id="findAll" resultMap="findAll">
+        select *
+        from user u, address a where u.id = a.id;
+    </select>
+</mapper>
